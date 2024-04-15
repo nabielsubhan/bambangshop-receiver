@@ -59,14 +59,14 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   Open another new terminal, edit `ROCKET_PORT` in `.env` to `8003`, then execute `cargo run`.
 
 ## Mandatory Checklists (Subscriber)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create SubscriberRequest model struct.`
-    -   [ ] Commit: `Create Notification database and Notification repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Notification repository.`
-    -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create SubscriberRequest model struct.`
+    -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Notification repository.`
+    -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -85,5 +85,8 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. Penggunaan `RwLock` lebih diutamakan pada kasus ini dibandingkan dengan `Mutex` adalah karena dengan menggunakan `RwLock` memungkinkan untuk mendapatkan read lock secara *concurrent* dan menerapkan *exclusive* akses write untuk memastikan konsistensi data ketika terjadi modifikasi. Di lain sisi, `Mutex` tidak membedakan antara read lock dan write lock, `Mutex` menerapkan *exclusive* akses untuk kedua operasi tersebut sehingga hanya bisa satu *thread* saja yang bisa mendapatkan lock di satu waktu. Hal tersebut dapat menyebabkan terjadinya *bottlenecks* pada sistem khususnya ketika banyak operasi read.
+
+2. Pada Rust, pengubahan kepada variabel *static* tidak diizinkan karena akan melanggar prinsip ownership dan borrowing yang cukup ketat di Rust. Hal ini dikarenakan Rust memiliki prinsip yang kuat untuk menjaga *thread safety* dan *memory safety*.Namun, Rust memiliki solusi terhadap permasalahan ini, yaitu dengan menggunakan `lazy_static`. Penggunaan `lazy_static` pada Rust untuk membuat *static variable* membuat variabel tersebut hanya diinisialisasi ketika pertama kali diakses dan hanya akan terdapat satu variabel saja di program tersebut. Ditambah dengan penggunaan sinkronisasi primitif, seperti `RwLock` dan `Mutex`, yang memungkinkan pengaksesan variabel secara *concurrent* tanpa menyebabkan masalah, seperti *race condition*, akan menjamin keamanan data di lingkungan *multithread*.
 
 #### Reflection Subscriber-2
