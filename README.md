@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement receive_notification function in Notification service.`
+    -   [x] Commit: `Implement receive function in Notification controller.`
+    -   [x] Commit: `Implement list_messages function in Notification service.`
+    -   [x] Commit: `Implement list function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -90,3 +90,8 @@ This is the place for you to write reflections:
 2. Pada Rust, pengubahan kepada variabel *static* tidak diizinkan karena akan melanggar prinsip ownership dan borrowing yang cukup ketat di Rust. Hal ini dikarenakan Rust memiliki prinsip yang kuat untuk menjaga *thread safety* dan *memory safety*.Namun, Rust memiliki solusi terhadap permasalahan ini, yaitu dengan menggunakan `lazy_static`. Penggunaan `lazy_static` pada Rust untuk membuat *static variable* membuat variabel tersebut hanya diinisialisasi ketika pertama kali diakses dan hanya akan terdapat satu variabel saja di program tersebut. Ditambah dengan penggunaan sinkronisasi primitif, seperti `RwLock` dan `Mutex`, yang memungkinkan pengaksesan variabel secara *concurrent* tanpa menyebabkan masalah, seperti *race condition*, akan menjamin keamanan data di lingkungan *multithread*.
 
 #### Reflection Subscriber-2
+1. Sejauh ini, saya belum mencoba mengeksplor hal-hal yang ada di luar Tutorial ini, hal tersebut dikarenakan saya masih perlu untuk memahami semua materi pada Tutorial ini secara lebih dalam. Namun, kedepannya saya akan mencoba untuk mengksplor lebih dalam lagi agar dapat membantu saya dalam pengerjaan Tugas Kelompok atau pun *project* lainnya.
+
+2. Dengan menggunakan *Observer pattern*, proses penambahan Subscriber baru cukup mudah, yaitu cukup dengan membuat objek Subscriber baru dan memasukkannya ke daftar Subscriber di suatu Subject tertentu. Desain yang dimiliki oleh *Observer pattern* memungkinkan untuk dilakukannya proses penambahan Subscriber dengan mudah karena antara Publisher dengan Observer tidak memiliki keterkaitan yang sangat kuat sehingga proses penambahan Subscriber tidak akan mengganggu fungsionalitas sistem secara keseluruhan. Jika kita mencoba untuk menginstansiasi lebih dari satu Main app, proses penambahan Subscriber baru juga cukup mudah karena masih-masing *instance* memiliki daftar Subscriber tersendiri sehingga cukup memasukkan Subscriber tersebut ke *instance* yang sesuai. Namun, jika kita ingin melakukan sinkronisasi antar *instance*, maka kita perlu menambahkan mekanisme penyimpanan bersama agar dapat diakses oleh setiap *instance* dan memastikan keamanan dalam hal *thread safety*.
+
+3. Saya belum mencoba untuk membuat Test sendiri atau mencoba fitur *enhance document* di Postman, tetapi mungkin akan menjadi tugas saya untuk mencoba mengeskplor fitur-fitur tersebut sehingga saya mengetahui apakah fitur-fitur tersebut dapat membantu saya dalam proses pengembangan perangkat lunak kedepannya.
